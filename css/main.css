@@ -11,7 +11,7 @@
 @import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
 body {
   max-width: 800px;
-  background: url("https://github.com/justabot2995/customlinks/blob/main/img/bg/unsplash_flower2.jpg");
+  background: url("https://images.unsplash.com/photo-1607893407846-49905270209e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80");
   margin: auto;
   background-size: cover;
   background-attachment: fixed;
@@ -63,7 +63,7 @@ body a {
   border-color: black;
   border-width: 1px;
   border-style: solid;
-  height: 90px;
+  height: 48px;
   background-color: black;
   transition: background 0.2s ease 0s;
   font-family: "Poiret One", sans-serif;
@@ -83,7 +83,7 @@ body a {
   transform: translate(-50%, -50%);
 }
 .content img {
-  height: 80px;
+  height: 38px;
   width: auto;
   float: left;
   margin-top: 0.1em;
@@ -94,8 +94,8 @@ body a {
   display: block;
   background-color: transparent;
   float: right;
-  height: 80px;
-  width: 80px;
+  height: 38px;
+  width: 38px;
   margin-right: -10px;
 }
 
