@@ -11,7 +11,7 @@
 @import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
 body {
   max-width: 800px;
-  background: url(/img/bg/unsplash_flower.jpg);
+  background: url("../img/bg/unsplash_flower.jpg");
   margin: auto;
   background-size: cover;
   background-attachment: fixed;
