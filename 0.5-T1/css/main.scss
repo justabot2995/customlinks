@@ -1,0 +1,463 @@
+/*
+ CUSTOM LINKS
+  ___  ____  ____ 
+ / __)/ ___)/ ___)
+( (__ \___ \\___ \
+ \___)(____/(____/
+ 
+*/
+
+// importing font files
+// for more info on this please check the
+// font section of the README.md file.
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+
+// BACKGROUNDS
+// full page color or image
+$page-background: url(/img/bg/coisa.png);
+
+// each linked content block
+$content-background: whitesmoke;
+
+// last content block
+$ending-background: rgba(0, 0, 0, 0.3); // opacity is the last number
+
+// HEIGHT & WIDTH
+$link-height: 56px;
+$max-page-width: 800px;
+$general-border-radius: 8px;
+
+//TEXT-COLOR
+$light-text:whitesmoke;
+$ending-text:whitesmoke;
+$profile-text: black;
+$content-text: black;
+
+//TODO: Change fonts here.
+
+// SOCIAL NETWORKS
+$socials-color-fill: whitesmoke;
+$socials-button-size: 48px;
+
+// BLUR -> SLOWS PERFORMANCE
+$blur: false;
+$blur-amount: 100px;
+
+// SHADOWS -> SLOWS PERFORMANCE
+$shadow: false;
+$shadow-position:2px;
+$shadow-spread:29px;
+
+//FONTS
+@mixin content-font {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 24pt;
+    font-weight: normal;
+    text-align: center;
+    color: $profile-text;
+}
+
+@mixin copiable-font {
+    font-family: 'Cascadia Code', sans-serif;
+    font-weight: normal;
+    font-size: 10pt;
+}
+
+@mixin profile-font {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 18pt;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    color: $profile-text;
+}
+
+@mixin general-font {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: justify;
+    color: $ending-text;
+
+    // titles
+    h1 {
+        padding: 16px 0px 0px 16px;
+        font-family: 'Cascadia Code', monospace;
+        font-weight: bold;
+        font-size: 18pt;
+    }
+}
+
+// Look and Feel
+@mixin margins {
+    margin-bottom: clamp(16px, 3vh, 32px);
+}
+
+@mixin blur {
+    @if $blur {
+        backdrop-filter: blur($blur-amount);
+
+        // performance related
+        // avoid messing
+        transform: translateZ(0); // for older browsers
+        will-change: transform;
+    }
+}
+
+@mixin button-hover {
+    border: $content-background;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    mix-blend-mode: unset;
+}
+
+@mixin box-shadow-effect {
+
+    @if ($shadow) {
+
+        $shadow-x: $shadow-position + $shadow-position/2;
+        $shadow-y: $shadow-position;
+
+        box-shadow: $shadow-y $shadow-x $shadow-spread rgb(0 0 0 / 0.2);
+
+        // performance related
+        // avoid messing
+        transform: translateZ(0); // for older browsers
+        will-change: transform;
+    }
+
+}
+
+@mixin all-blocks {
+    // you can change those, but it
+    // might break the look and feel
+    // avoid messing unless you know
+    // at least a bit of CSS
+    width: 92vw;
+    max-width: 800px;
+    border-radius: $general-border-radius;
+    margin: auto;
+    vertical-align: middle;
+}
+
+@mixin socials {
+    // social link-images
+    width: $socials-button-size;
+    padding: 8px 0px; // distance between links
+    height: auto;
+}
+
+@mixin links {
+    @include all-blocks;
+    @include copiable-font;
+
+    img {
+        border-radius: 8px;
+        width: 60px;
+    }
+}
+
+// relation between link height and image height
+// avoid changing, can break the look and feel
+$img-height: $link-height - 10px;
+
+// CSS
+body {
+    max-width: $max-page-width;
+    background: $page-background;
+
+    margin: auto;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 0;
+
+    // just removing ugly html style
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    // same
+    a {
+        text-decoration: none;
+    }
+}
+
+// top name and picture
+.profile {
+
+    a {
+        @include profile-font;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    }
+}
+
+// static information about each link
+.content {
+    @include all-blocks;
+    @include margins;
+    @include box-shadow-effect;
+
+    // avoid changing
+    overflow: hidden;
+    display: block;
+    outline: inherit;
+
+    // border
+    border-radius: $general-border-radius;
+    border-color: $content-background;
+    border-width: 1px;
+    border-style: solid;
+
+    // avoid changing
+    height: $link-height;
+    background-color: $content-background;
+    transition: background .2s ease 0s;
+
+    @include content-font;
+
+    .content__block {
+        padding: 8px 8px 8px 8px;
+    }
+
+    img {
+        height: $img-height;
+        width: auto;
+        float: left;
+        margin-top: 0.1em;
+        margin-left: -.05em;
+        border-radius: $general-border-radius;
+    }
+
+    // this is an invisible div that is
+    // used to center the text despite the size
+    // of the visible image on the left.
+    .content__spacer {
+        display: block;
+        background-color: transparent;
+        float: right;
+        height: $img-height;
+        width: $img-height;
+        margin-right: -10px;
+
+        // uncomment lines to see the div
+        //background-color: red;
+        //z-index: 1;
+    }
+
+}
+
+// animation when you hover over each link
+.content:hover {
+    background: transparent;
+    transition: background .2s ease 0s;
+    cursor: pointer;
+
+    section {
+        color: $content-background;
+    }
+}
+
+// social networks static and animation
+.socials {
+    //
+    @include margins;
+    vertical-align: middle;
+
+    ul {
+
+        display: flex;
+        justify-content: center;
+
+        img {
+            filter: invert(100%);
+            width: 10vw;
+            height: auto;
+            max-width: 48px;
+        }
+
+        // animation of social links on hover
+        img:hover {
+            @keyframes social-icon-animation {
+                0% {
+                    transform: scale(1.0);
+                }
+
+                20% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            animation: social-icon-animation 1s infinite 0s;
+        }
+
+        li {
+            padding: 8px;
+            padding-bottom: 0;
+        }
+    }
+}
+
+// styling of the ending block
+// that contains more information
+.ending {
+    @include all-blocks;
+    @include blur;
+    background: $ending-background;
+
+    word-wrap: break-word;
+
+    .ending__text {
+        @include general-font;
+    }
+
+    p {
+        width: inherit;
+        padding: 0em 16px;
+    }
+
+    // for some reason I could not
+    // properly implement margins
+    // below the ending, that is
+    // why I put a transparent
+    // section there.
+    section {
+        text-align: center;
+        color: transparent;
+    }
+}
+
+// style of each copiable element
+// whenever clicked they will trigger
+// main.js to copy the content and display
+// a custom-tooltip.
+.copiable {
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 16px 0em 0em 16px;
+
+    li {
+        @include copiable-font;
+
+        margin-top: -0.15em;
+        line-height: 2em;
+
+        cursor: pointer;
+
+        color: $ending-text;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    ul {
+        display: flex;
+        height: 1.6em;
+        width: 80vw;
+        max-width: 25em;
+
+        border-radius: $general-border-radius;
+        border-style: solid;
+        border-color: $ending-text;
+        border-width: 1.5px;
+
+        transition: background .2s ease 0s;
+
+        // mini logos
+        img {
+            //filter: grayscale(100);
+            //opacity: 0.4;
+            width: 1.6em;
+            height: 1.6em;
+            margin: .3em;
+            z-index: 4;
+        }
+    }
+
+    // highlight
+    .copiable-ul:hover {
+        background-color: $content-background;
+        transition: background .2s ease 0s;
+        cursor: pointer;
+
+        li {
+            color: $content-text;
+        }
+
+        img {
+            filter: unset;
+            opacity: 1;
+        }
+    }
+
+}
+
+// custom-tooltip displayed when
+// copiable element is clicked
+#custom-tooltip {
+
+    display: none;
+    position: absolute;
+    width: auto;
+    height: 1.3em;
+    padding: 8px;
+
+    @include copiable-font();
+    text-align: center;
+    color: $light-text;
+    background-color: rgba(0, 0, 0);
+    border-radius: $general-border-radius;
+
+
+    z-index: 1;
+
+    @keyframes fade-in-out {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    animation: fade-in-out 1.3s;
+    animation-delay: 0s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+footer {
+    @include general-font;
+    text-align: center;
+    padding: 2em;
+    color: $ending-text;
+
+    img {
+        margin-bottom: -0.5em;
+        width: 60px;
+        height: auto;
+    }
+}

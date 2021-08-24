@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+body {
+  max-width: 800px;
+  margin: auto;
+  background: #8d5151;
+}
+body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+body a {
+  text-decoration: none;
+}
+
+.profile a {
+  font-family: "Poiret One", sans-serif;
+  font-size: 18pt;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.profile header {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
+.content {
+  width: 92vw;
+  max-width: 800px;
+  border-radius: clamp(4px, 2vw, 16px);
+  margin: auto;
+  vertical-align: middle;
+  margin-bottom: clamp(16px, 3vh, 32px);
+  overflow: hidden;
+  display: block;
+  height: 56px;
+  border-radius: clamp(4px, 2vw, 16px);
+  border-color: whitesmoke;
+  border-width: 1px;
+  border-style: solid;
+  background-color: whitesmoke;
+  text-align: center;
+  font-family: "Poiret One", cursive;
+  font-size: 24pt;
+  outline: inherit;
+}
+.content .content__block {
+  padding: 8px 8px 8px 8px;
+}
+.content .content__link {
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: normal;
+  font-size: 12pt;
+  mix-blend-mode: screen;
+  background-color: white;
+  padding: 12px;
+  border-radius: 3px;
+  border: whitesmoke;
+  border-style: solid;
+  border-width: 1px;
+  display: inline;
+  pointer-events: none;
+  touch-action: none;
+  top: -200px;
+  opacity: 0;
+}
+.content .content__link span {
+  height: 30px;
+}
+
+.content:hover {
+  background: transparent;
+  transition: background 0.2s ease 0s;
+}
+.content:hover section {
+  display: none;
+}
+.content:hover .content__tag {
+  display: none;
+}
+
+.content:hover .content__link {
+  pointer-events: all;
+  touch-action: auto;
+  display: inline;
+  position: relative;
+  top: -0.45em;
+  opacity: 1;
+  transition: top 0s ease 0s;
+  transition: color 0s ease 0s;
+  transition: opacity 0s ease 0s;
+  transition-delay: 0s;
+}
+
+.content__link:hover {
+  border: whitesmoke;
+  border-style: solid;
+  border-width: 1px;
+  background-color: transparent;
+  mix-blend-mode: unset;
+  background-color: transparent;
+  color: whitesmoke;
+  mix-blend-mode: unset;
+  cursor: pointer;
+}
+
+.socials {
+  margin-bottom: clamp(16px, 3vh, 32px);
+  vertical-align: middle;
+}
+.socials ul {
+  display: flex;
+  justify-content: center;
+}
+.socials ul li {
+  padding: 8px;
+  padding-bottom: 0;
+}
+.socials ul img {
+  width: 10vw;
+  height: auto;
+  max-width: 48px;
+  border-radius: 8px;
+}
+
+.ending {
+  width: 92vw;
+  max-width: 800px;
+  border-radius: clamp(4px, 2vw, 16px);
+  margin: auto;
+  vertical-align: middle;
+  background: black;
+  word-wrap: break-word;
+}
+.ending .ending__text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12pt;
+  font-weight: normal;
+  text-align: justify;
+  color: #4d6997;
+}
+.ending .ending__text h1 {
+  padding: 16px 0px 0px 16px;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.ending p {
+  width: inherit;
+  padding: 0em 16px;
+}
+
+.copiable {
+  vertical-align: middle;
+  padding: 0.5em 0em;
+  cursor: pointer;
+  padding: 16px 0em 0em 16px;
+}
+.copiable li {
+  margin-top: -0.15em;
+  line-height: 2em;
+  padding: 0.4em;
+  cursor: pointer;
+  font-family: "Cascadia Code", sans-serif;
+  font-weight: normal;
+  font-size: 12pt;
+  font-size: 10pt;
+  color: #4d6997;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.copiable ul {
+  display: flex;
+  height: 2em;
+  width: 80vw;
+  max-width: 25em;
+  border-radius: 16px;
+  border-style: solid;
+  border-color: #4d6997;
+  border-width: 1px;
+}
+.copiable ul img {
+  filter: sepia(100%) hue-rotate(-190deg);
+  opacity: 0.4;
+  width: 1.6em;
+  height: 1.6em;
+  margin: 0.2em;
+}
+.copiable .copiable-ul:hover {
+  background-color: #141414;
+  cursor: pointer;
+}
+.copiable .copiable-ul:hover li {
+  color: #6489c5;
+}
+.copiable .copiable-ul:hover img {
+  filter: unset;
+  opacity: 1;
+}
+
+.closer {
+  display: block;
+  margin: auto;
+  text-align: center;
+  padding: 3em;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14pt;
+  color: white;
+}
+.closer img {
+  margin-bottom: -0.5em;
+  width: 60px;
+  height: auto;
+}
+
+#custom-tooltip {
+  display: none;
+  position: fixed;
+  padding: 0.5em;
+  width: 60px;
+  height: 1.3em;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: whitesmoke;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 8px;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 20vh;
+  -webkit-animation: fade-in-out 1.3s;
+          animation: fade-in-out 1.3s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}/*# sourceMappingURL=main.css.map */

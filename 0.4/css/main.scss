@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+
+// global variables
+$page-background: rgb(141, 81, 81);
+$content-background: whitesmoke;
+$ending-background: black;
+
+$light-text:whitesmoke;
+$dark-text:rgb(77, 105, 151);
+$profile-text: black;
+$highlight-link-text: black;
+
+$content-hover-text: black;
+$copiable-hover-text: rgb(100, 137, 197);
+
+$general-padding: 16px;
+$content-height: 56px;
+$max-page-width: 800px;
+
+$general-transition-time: .3s;
+
+//FONTS
+@mixin content-font {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 24pt;
+    font-weight: normal;
+    text-align: center;
+    color: $dark-text;
+}
+
+@mixin link-font {
+    font-family: 'Cascadia Code', sans-serif;
+    font-weight: normal;
+    font-size: 12pt;
+}
+
+@mixin profile-font {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 18pt;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    color: $profile-text;
+}
+
+@mixin general-font {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: justify;
+    color: $dark-text;
+
+    h1 {
+        padding: 16px 0px 0px 16px;
+        font-family: 'Cascadia Code', sans-serif;
+        font-weight: bold;
+        font-size: 18pt;
+    }
+}
+
+@mixin description-font {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    text-align: left;
+    color: $light-text;
+}
+
+@mixin margins {
+    margin-bottom: clamp(16px, 3vh, 32px);
+}
+
+@mixin button-hover {
+    border: $content-background;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    mix-blend-mode: unset;
+}
+
+@mixin all-blocks {
+
+    // might change but those
+    // can break the look and feel
+    width: 92vw;
+    max-width: 800px;
+
+    border-radius: clamp(4px, 2vw, 16px);
+
+    // avoid messing if possible
+    margin: auto;
+    vertical-align: middle;
+}
+
+@mixin socials {
+    // social link-images
+    width: 100%;
+    height: auto;
+    max-width: 48px;
+    padding: 8px;
+    border-radius: 18px;
+}
+
+@mixin links {
+    @include all-blocks;
+    @include link-font;
+
+    img {
+        border-radius: 8px;
+        width: 60px;
+    }
+}
+
+body {
+    max-width: $max-page-width;
+    margin: auto;
+
+    background: $page-background;
+
+    //background: url(/img/window_2.png) no-repeat center center fixed;
+    //background-size: cover;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.profile {
+
+    a {
+        @include profile-font;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    }
+}
+
+.content {
+    @include all-blocks;
+    @include margins;
+    overflow: hidden;
+    display: block;
+
+    height: $content-height;
+
+    // border
+    border-radius: clamp(4px, 2vw, 16px);
+    border-color: whitesmoke;
+    border-width: 1px;
+    border-style: solid;
+
+    background-color: whitesmoke;
+
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+    font-size: 24pt;
+
+    outline: inherit;
+
+    .content__block {
+        padding: 8px 8px 8px 8px;
+    }
+
+    .content__link {
+        @include link-font;
+        mix-blend-mode: screen;
+
+        background-color: rgb(255, 255, 255);
+
+        padding: 12px;
+        border-radius: 3px;
+        border: $content-background;
+        border-style: solid;
+        border-width: 1px;
+
+        // animation related
+        // avoid false click related
+        display: inline;
+        pointer-events: none;
+        touch-action: none;
+        //position: relative;
+        top: -200px;
+        opacity: 0;
+
+        span {
+            height: 30px;
+        }
+    }
+}
+
+.content:hover {
+    background: transparent;
+    transition: background .2s ease 0s;
+
+    section {
+        display: none;
+    }
+
+    .content__tag {
+        display: none;
+    }
+}
+
+.content:hover .content__link {
+    pointer-events: all;
+    touch-action: auto;
+    display: inline;
+    position: relative;
+    top: -.45em;
+    opacity: 1;
+    transition: top 0s ease 0s;
+    transition: color 0s ease 0s;
+    transition: opacity 0s ease 0s;
+    transition-delay: 0s;
+}
+
+.content__link:hover {
+    @include button-hover;
+    background-color: transparent;
+    color: $content-background;
+    mix-blend-mode: unset;
+    cursor: pointer;
+}
+
+.socials {
+    //
+    @include margins;
+    vertical-align: middle;
+
+
+    ul {
+
+        display: flex;
+        justify-content: center;
+
+        li {
+            padding: 8px;
+            padding-bottom: 0;
+        }
+
+        img {
+            width: 10vw;
+            height: auto;
+            max-width: 48px;
+            border-radius: 8px;
+        }
+    }
+}
+
+.ending {
+    @include all-blocks;
+    background: $ending-background;
+    word-wrap: break-word;
+
+    .ending__text {
+        @include general-font;
+    }
+
+    p {
+        width: inherit;
+        padding: 0em 16px;
+    }
+
+}
+
+.copiable {
+    vertical-align: middle;
+    padding: .5em 0em;
+    cursor: pointer;
+    padding: 16px 0em 0em 16px;
+
+    li {
+        margin-top: -0.15em;
+        line-height: 2em;
+        padding: .4em;
+
+        cursor: pointer;
+
+        @include link-font;
+        font-size: 10pt;
+
+        color: rgb(77, 105, 151);
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    ul {
+        display: flex;
+        height: 2em;
+        width: 80vw;
+        max-width: 25em;
+
+        border-radius: 16px;
+        border-style: solid;
+        border-color: $dark-text;
+        border-width: 1px;
+
+        // mini logos
+        img {
+            filter: sepia(100%) hue-rotate(-190deg);
+            opacity: 0.4;
+            width: 1.6em;
+            height: 1.6em;
+            margin: .2em;
+        }
+    }
+
+    // highlight
+    .copiable-ul:hover {
+        background-color: rgb(20, 20, 20);
+        cursor: pointer;
+
+        li {
+            color: rgb(100, 137, 197);
+        }
+
+        img {
+            filter: unset;
+            opacity: 1;
+        }
+    }
+
+}
+
+.closer {
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 3em;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14pt;
+    color: white;
+
+    img {
+        margin-bottom: -0.5em;
+        width: 60px;
+        height: auto;
+    }
+}
+
+#custom-tooltip {
+
+    display: none;
+    position: fixed;
+
+    padding: .5em;
+
+    width: 60px;
+    height: 1.3em;
+
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 8px;
+
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 20vh;
+
+    @keyframes fade-in-out {
+        0% {
+            opacity: 0;
+        }
+
+        25% {
+            opacity: 1;
+        }
+
+        75% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    animation: fade-in-out 1.3s;
+    animation-delay: 0s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
